@@ -28,7 +28,34 @@
     <!-- Core theme CSS (includes Bootstrap)-->
 <link href="home/css/quill.core.css" rel="stylesheet" />
     <link href="article/css/styles.css" rel="stylesheet" />
-    
+    <script>
+        // Function to extract the URL slug
+        function extractSlugFromURL() {
+            // Get the current URL
+            var url = window.location.href;
+
+            // Extract the part after the last '/'
+            var parts = url.split('/');
+            var slugWithExtension = parts[parts.length - 1];
+            
+
+            // Remove .html extension from slug
+            var slug = slugWithExtension.replace('.html', '');
+
+            // Replace hyphens with spaces in the anchor text
+            var anchorText = slug.replace(/-/g, ' ');
+
+            // Update the anchor text with the replaced string
+            var link = document.getElementById('dynamicLink');
+            link.textContent = anchorText;
+            
+            // Update the href attribute with the slug including .html extension
+            link.href = link.href.replace('*', slugWithExtension); // Keep .html in href
+        }
+
+        // Call the function when the page loads
+        window.onload = extractSlugFromURL;
+    </script>
     <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=62dc22846895ac00191ea9d1&product=inline-share-buttons" async="async"></script>
 
     <style>
@@ -251,9 +278,9 @@
 
 <!-- Page Content-->
 <section class="pt-4 article-container">
-    <header class="py-2 border-bottom mb-4" style="display: none">
+    <header class="py-2 border-bottom mb-4" style="display: inherit">
         <div class="container ql-editor article-card-text" id="sitewide-header" >
-            
+            <a id="dynamicLink" href="https://storage.googleapis.com/jewelry-dubai-uae/*">click</a>
         </div>
     </header>
     <div class="container px-lg-5">
@@ -263,7 +290,7 @@
         <header class="py-5">
             <div class="container px-lg-5">
                 <div class="p-4 p-lg-5 rounded-3 text-center cards-container">
-                    <img class="card-img-top" src="jewelry-dubai-uae-150343.jpg?key=SdUq4h" alt="Jewelry Dubai UAE" />
+                    <img class="card-img-top" src="jewelry-dubai-uae-150343.jpg?key=mVHqBp" alt="Jewelry Dubai UAE" />
                 </div>
             </div>
         </header>
